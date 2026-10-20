@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Your cart</h2>
+{% for i in items %}
+<div class="card">
+  {{ i.product.name }}: {{ i.qty }} kg = KES {{ i.subtotal }}
+  <form method="post" action="{% url 'remove_from_cart' i.product.id %}" style="display:inline">
+    {% csrf_token %}<button>Remove</button>
+  </form>
+</div>
+{% empty %}<p>Cart is empty.</p>{% endfor %}
+{% if items %}<h3>Total: KES {{ total }}</h3><a class="btn" href="{% url 'checkout' %}">Checkout</a>{% endif %}
+{% endblock %}

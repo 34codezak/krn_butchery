@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Our meats</h2>
+<div class="filters">
+  <a href="{% url 'product_list' %}">All</a>
+  {% for c in categories %} | <a href="?category={{ c.id }}">{{ c.name }}</a>{% endfor %}
+</div>
+{% for p in products %}
+<div class="card">
+  <h3>{{ p.name }} - KES {{ p.price_per_kg }}/kg</h3>
+  <p>{{ p.description }}</p>
+  <form method="post" action="{% url 'add_to_cart' p.id %}">{% csrf_token %}
+    <input type="number" name="quantity" value="1" min="0.25" step="0.25"> kg
+    <button>Add to cart</button>
+  </form>
+</div>
+{% empty %}<p>No products available.</p>{% endfor %}
+{% endblock %}

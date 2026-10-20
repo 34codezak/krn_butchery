@@ -1,0 +1,220 @@
+:root {
+  --red: #b3121b;
+  --red-dark: #7d0d13;
+  --black: #111111;
+  --white: #ffffff;
+  --grey: #f3f3f3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--black);
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(60,0,0,.75)),
+    url('../img/meat-bg.jpg') center / cover fixed no-repeat,
+    linear-gradient(135deg, #1a0000, #000);
+}
+
+input, textarea, select, button { font: inherit; }
+
+/* ---------- Navigation ---------- */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: center;
+  background: var(--black);
+  border-bottom: 4px solid var(--red);
+  padding: .8rem 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+nav a { color: var(--white); text-decoration: none; font-weight: 500; }
+nav a:hover { color: #ff5a62; }
+nav .brand { font-size: 1.3rem; font-weight: 800; letter-spacing: .5px; }
+nav .brand span { color: var(--red); }
+nav form { display: inline; margin: 0 0 0 auto; }
+nav button {
+  background: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+  padding: .4rem .8rem;
+}
+nav button:hover { background: var(--red); border-color: var(--red); }
+
+/* ---------- Page container ---------- */
+main {
+  max-width: 900px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background: rgba(255,255,255,.96);
+  border-radius: 10px;
+  border-top: 6px solid var(--red);
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+main h2 {
+  margin-top: 0;
+  color: var(--red-dark);
+  border-bottom: 2px solid var(--black);
+  padding-bottom: .4rem;
+}
+main h3 { margin: 0 0 .4rem; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--white);
+  border: 1px solid #ddd;
+  border-left: 6px solid var(--red);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: .8rem 0;
+}
+
+/* ---------- Messages ---------- */
+.msg {
+  max-width: 900px;
+  margin: 1rem auto 0;
+  padding: .7rem 1rem;
+  background: var(--black);
+  color: var(--white);
+  border-left: 6px solid var(--red);
+  border-radius: 6px;
+}
+
+/* ---------- Buttons and links ---------- */
+button, .btn {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  padding: .55rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+button:hover, .btn:hover { background: var(--red-dark); }
+main a { color: var(--red); font-weight: 600; }
+
+/* ---------- Generic inputs ---------- */
+input, textarea, select {
+  padding: .5rem;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  max-width: 100%;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--red);
+}
+form p label { display: block; font-weight: 600; margin-bottom: .2rem; }
+.helptext { font-size: .85rem; color: #666; }
+.errorlist { font-size: .85rem; color: var(--red); list-style: none; padding: 0; }
+
+/* ---------- Category filter pills ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+.filters a {
+  background: var(--black);
+  color: var(--white);
+  padding: .35rem .9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: .9rem;
+}
+.filters a:hover { background: var(--red); }
+
+/* ---------- Sign up / login card ---------- */
+main.auth-page {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+.auth-card {
+  max-width: 440px;
+  margin: 0 auto 2rem;
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+.auth-head {
+  background: linear-gradient(135deg, var(--black), var(--red-dark));
+  color: var(--white);
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 4px solid var(--red);
+}
+.auth-head h2 {
+  color: var(--white);
+  border: none;
+  margin: 0 0 .3rem;
+  padding: 0;
+}
+.auth-head p { margin: 0; font-size: .9rem; opacity: .85; }
+
+.auth-card form { padding: 1.5rem 1.5rem .5rem; }
+
+.field { margin-bottom: 1.1rem; }
+.field label {
+  display: block;
+  font-weight: 700;
+  font-size: .9rem;
+  margin-bottom: .3rem;
+}
+.field input {
+  display: block;
+  width: 100%;
+  padding: .7rem .8rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background: var(--grey);
+  transition: border-color .15s, background .15s;
+}
+.field input:focus { border-color: var(--red); background: var(--white); }
+.field.has-error input { border-color: var(--red); background: #fff5f5; }
+.field-error {
+  color: var(--red);
+  font-size: .85rem;
+  font-weight: 600;
+  margin-top: .3rem;
+}
+
+.field-help { margin-top: .3rem; font-size: .8rem; color: #666; }
+.field-help summary { cursor: pointer; color: var(--red-dark); font-weight: 600; }
+.field-help ul { margin: .4rem 0 0; padding-left: 1.2rem; }
+
+.form-alert {
+  background: #fff5f5;
+  border-left: 5px solid var(--red);
+  padding: .6rem .8rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  color: var(--red-dark);
+}
+.form-alert ul { margin: 0; padding-left: 1rem; }
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding: .8rem;
+  font-size: 1.05rem;
+  margin-top: .5rem;
+}
+.auth-foot {
+  text-align: center;
+  padding: 0 1.5rem 1.5rem;
+  font-size: .9rem;
+}
+.auth-foot a { color: var(--red); font-weight: 700; }
+
+@media (max-width: 600px) {
+  main { margin: .8rem; padding: 1rem; }
+  main.auth-page { padding: 0; }
+}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Checkout</h2>
+<ul>{% for i in items %}<li>{{ i.product.name }}: {{ i.qty }} kg - KES {{ i.subtotal }}</li>{% endfor %}</ul>
+<h3>Total: KES {{ total }}</h3>
+<form method="post">{% csrf_token %}{{ form.as_p }}<button>Place order</button></form>
+{% endblock %}

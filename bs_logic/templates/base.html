@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kiringa Butchery</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2">
+</head>
+<body>
+<nav>
+  <a class="brand" href="{% url 'product_list' %}">Kiringa <span>Butchery</span></a>
+  <a href="{% url 'product_list' %}">Shop</a>
+  <a href="{% url 'cart_detail' %}">Cart</a>
+  {% if user.is_authenticated %}
+    <a href="{% url 'order_history' %}">My orders</a>
+    <form method="post" action="{% url 'logout' %}">{% csrf_token %}
+      <button>Log out ({{ user.username }})</button>
+    </form>
+  {% else %}
+    <a href="{% url 'login' %}">Log in</a>
+    <a href="{% url 'signup' %}">Sign up</a>
+  {% endif %}
+</nav>
+
+{% for m in messages %}<p class="msg">{{ m }}</p>{% endfor %}
+
+<main class="{% block main_class %}{% endblock %}">
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

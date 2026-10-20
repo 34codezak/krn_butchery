@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>My orders</h2>
+{% for o in orders %}
+<div class="card">
+  <strong>Order #{{ o.id }}</strong> - {{ o.get_status_display }} - {{ o.created_at|date:"d M Y H:i" }}
+  <ul>{% for i in o.items.all %}<li>{{ i.product.name }}: {{ i.quantity_kg }} kg</li>{% endfor %}</ul>
+  <strong>Total: KES {{ o.total }}</strong>
+</div>
+{% empty %}<p>No orders yet.</p>{% endfor %}
+{% endblock %}
